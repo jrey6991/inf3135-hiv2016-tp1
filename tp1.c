@@ -23,6 +23,8 @@ typedef struct Ville {
     struct Pays pays;         // Le pays de la ville
 } Ville;
 
+FILE* ouvrirFichier(char*);
+int fermerFichier(FILE*);
 
 int main(int argc, const char * argv[]) {
     if (argc != 2 )
@@ -33,4 +35,13 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+FILE* ouvrirFichier(char* fichier)
+{
+    return fopen(fichier, "r");
+}
+
+int fermerFichier(FILE *fichierp)
+{
+    return fclose(fichierp);
+}
 
