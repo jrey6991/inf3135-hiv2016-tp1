@@ -27,6 +27,8 @@ typedef struct Ville {
 
 FILE* ouvrirFichier(char*);
 int fermerFichier(FILE*);
+Pays traiterPays(char*);
+Ville traiterVille( char*, Pays*);
 
 int main(int argc, const char * argv[]) {
     
@@ -85,4 +87,44 @@ int fermerFichier(FILE *fichierp)
 {
     return fclose(fichierp);
 }
+
+Pays traiterPays(char* ligne){
+    char *token;
+    int cpt = 0;
+    Pays unPays;
+    while ((token = strsep(&ligne, DELIMITER)) != NULL) {
+        if (cpt == 0) {
+            strcpy(unPays.code, token);
+        } else if (cpt == 4){
+            strcpy(unPays.nom, token);
+        }
+        cpt++;
+    }
+    return unPays;
+}
+
+Ville traiterVille(char *ligne, Pays* tab){
+    char *token;
+    char* ptr;
+    int cpt = 0;
+    Ville uneVille;
+    Pays unPays;
+    while ((token = strsep(&ligne, DELIMITER)) != NULL) {
+        if (cpt == 14) {
+            uneVille.population = strtol(token, &ptr, 10);
+        }else if (cpt == 2) {
+            strcpy(uneVille.nom, token);
+            
+        } else if (cpt == 8) {
+            
+            unPays = rechercherPays(token, tab);
+            strcpy(uneVille.pays.code, unPays.code);
+            strcpy(uneVille.pays.nom, unPays.nom);
+            
+        }
+        cpt++;
+    }
+    return uneVille;
+}
+
 
