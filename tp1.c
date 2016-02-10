@@ -12,6 +12,8 @@
 #define TAILLE_BUFFER 5000
 #define LONG_NOM_PAYS 100
 #define LONG_NOM_VILLE 100
+#define LONG_TABLEAU_VILLE  25000
+#define LONG_TABLEAU_PAYS   300
 typedef struct Pays {
     char nom[LONG_NOM_PAYS];   // Le nom ASCII
     char code[LONG_CODE_PAYS]; // Le code de deux lettres
@@ -27,6 +29,17 @@ FILE* ouvrirFichier(char*);
 int fermerFichier(FILE*);
 
 int main(int argc, const char * argv[]) {
+    
+    FILE* cities;
+    FILE* country;
+    char buffer[TAILLE_BUFFER];
+    char* ptr;
+    Pays lepays;
+    Pays tabPays[LONG_TABLEAU_PAYS];
+    Ville laville;
+    Ville tabVille[LONG_TABLEAU_VILLE];
+    int i = 0;
+    
     if (argc != 2 )
     {
         printf("Le nombre d'arguments entrer est inferieur ou superieur a 2\n");
@@ -40,6 +53,23 @@ int main(int argc, const char * argv[]) {
     
     cities = ouvrirFichier("./cities15000.txt");
     country = ouvrirFichier("./country.txt");
+    
+    while (fgets(buffer, TAILLE_BUFFER, country)) {
+        if (buffer[0] == '#') {
+            continue;
+        }else{
+            lepays = traiterPays(buffer);
+            tabPays[i] = lepays;
+            i++;
+        }
+    }
+    i = 0;
+    while (fgets(buffer, TAILLE_BUFFER, cities))
+    {
+        laville = traiterVille(buffer, tabPays);
+        tabVille[i] = laville;
+        i++;
+    }
     
     fermerFichier(cities);
     fermerFichier(country);
