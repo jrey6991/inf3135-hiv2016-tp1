@@ -32,6 +32,17 @@ int main(int argc, const char * argv[]) {
         printf("Le nombre d'arguments entrer est inferieur ou superieur a 2\n");
         return 1;
     }
+    
+    if (n < 1 || n >5000) {
+        printf("Le nombre entrer n'est pas valide\n");
+        return 1;
+    }
+    
+    cities = ouvrirFichier("./cities15000.txt");
+    country = ouvrirFichier("./country.txt");
+    
+    fermerFichier(cities);
+    fermerFichier(country);
     return 0;
 }
 
