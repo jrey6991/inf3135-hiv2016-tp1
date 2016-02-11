@@ -15,6 +15,8 @@
 #define LONG_NOM_VILLE 100
 #define LONG_TABLEAU_VILLE  25000
 #define LONG_TABLEAU_PAYS   300
+#define DELIMITER "\t"
+
 typedef struct Pays {
     char nom[LONG_NOM_PAYS];   // Le nom ASCII
     char code[LONG_CODE_PAYS]; // Le code de deux lettres
@@ -31,6 +33,8 @@ int fermerFichier(FILE*);
 Pays traiterPays(char*);
 Ville traiterVille( char*, Pays*);
 Pays rechercherPays(char*, Pays*);
+void echanger(Ville*, int, int);
+void quickSort(Ville*, int, int);
 
 int main(int argc, const char * argv[]) {
     
@@ -75,6 +79,7 @@ int main(int argc, const char * argv[]) {
         i++;
     }
     
+    quickSort(tabVille, 0, LONG_TABLEAU_VILLE - 1);
     fermerFichier(cities);
     fermerFichier(country);
     return 0;
@@ -140,3 +145,38 @@ Pays rechercherPays(char* code, Pays* tableau){
     }
     return pays;
 }
+
+void echanger(Ville* tableau, int a, int b)
+{
+    Ville temp = tableau[a];
+    tableau[a] = tableau[b];
+    tableau[b] = temp;
+    
+}
+
+void quickSort(Ville* tableau, int debut, int fin)
+{
+    int gauche = debut-1;
+    int droite = fin+1;
+    const long pivot = tableau[debut].population;
+    
+    
+    if(debut >= fin)
+        return;
+    
+    
+    while(1)
+    {
+        do droite--; while(tableau[droite].population < pivot);
+        do gauche++; while(tableau[gauche].population > pivot);
+        
+        if(gauche < droite)
+            echanger(tableau, gauche, droite);
+        else break;
+    }
+    
+    
+    quickSort(tableau, debut, droite);
+    quickSort(tableau, droite+1, fin);
+}
+
