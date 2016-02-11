@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #define TAILLE_BUFFER 5000
 #define LONG_NOM_PAYS 100
+#define LONG_CODE_PAYS 3
 #define LONG_NOM_VILLE 100
 #define LONG_TABLEAU_VILLE  25000
 #define LONG_TABLEAU_PAYS   300
@@ -29,6 +30,7 @@ FILE* ouvrirFichier(char*);
 int fermerFichier(FILE*);
 Pays traiterPays(char*);
 Ville traiterVille( char*, Pays*);
+Pays rechercherPays(char*, Pays*);
 
 int main(int argc, const char * argv[]) {
     
@@ -127,4 +129,14 @@ Ville traiterVille(char *ligne, Pays* tab){
     return uneVille;
 }
 
-
+Pays rechercherPays(char* code, Pays* tableau){
+    int i;
+    Pays pays;
+    for (i = 0; i < LONG_TABLEAU_PAYS; i++) {
+        if (strcmp(code, tableau[i].code) == 0) {
+            strcpy(pays.code, tableau[i].code);
+            strcpy(pays.nom, tableau[i].nom);
+        }
+    }
+    return pays;
+}
