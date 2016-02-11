@@ -35,6 +35,7 @@ Ville traiterVille( char*, Pays*);
 Pays rechercherPays(char*, Pays*);
 void echanger(Ville*, int, int);
 void quickSort(Ville*, int, int);
+void afficherResultats(Ville*, int);
 
 int main(int argc, const char * argv[]) {
     
@@ -80,6 +81,7 @@ int main(int argc, const char * argv[]) {
     }
     
     quickSort(tabVille, 0, LONG_TABLEAU_VILLE - 1);
+    afficherResultats(tabVille, n);
     fermerFichier(cities);
     fermerFichier(country);
     return 0;
@@ -180,3 +182,14 @@ void quickSort(Ville* tableau, int debut, int fin)
     quickSort(tableau, droite+1, fin);
 }
 
+void afficherResultats(Ville* tab, int nombre){
+    int i = 0;
+    int rang = 1;
+    printf("%4s %-50s %-50s %10s\n", RANG, NOM, PAYS, POPULATION);
+    printf("%4s %-50s %-50s %10s\n", "----", "---", "----", "----------");
+    for (i = 0; i< nombre; i++) {
+        printf("%4d %-50s %-50s %10.0ld\n", rang, tab[i].nom, tab[i].pays.nom, tab[i].population);
+        
+        rang++;
+    }
+}
