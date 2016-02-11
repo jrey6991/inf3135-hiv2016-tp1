@@ -15,14 +15,12 @@ Joy-Rey Babagbeto (BABJ21119609)
 Pour compiler le programme il faut effectuer la commande <make> qui produit l'exécutable. Ensuite pour charger les fichiers il faut effectuer la commande <make database>. On peux alors lancer le programme en effectuant la commande ./tp1 n, n étant le nombre de villes que l'on veut afficher. Voici quelques examples d'utilisation:
 
 Compilation:
-
 make
 
 gcc -c tp1.c
 gcc -o tp1 tp1.o
 
 Chargement de fichiers:
-
 make database
 
 curl http://download.geonames.org/export/dump/countryInfo.txt -o "country.txt"
@@ -38,25 +36,21 @@ Archive:  cities.zip
 inflating: cities15000.txt 
 
 Exemple 1:
-
 ./tp1
 
 Le nombre d'arguments entrer est inferieur ou superieur a 2
 
 Exemple 2:
-
 ./tp1 10 n
 
 Le nombre d'arguments entrer est inferieur ou superieur a 2
 
 Exemple 3:
-
 ./tp1 0
 
 Le nombre entrer n'est pas valide
 
 Exemple 4:
-
 ./tp1 10
 
 Rang  Nom                                                Pays                                               Population
