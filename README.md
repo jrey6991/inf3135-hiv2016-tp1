@@ -53,18 +53,18 @@ Le nombre entrer n'est pas valide
 Exemple 4:
 ./tp1 10
 
-Rang  Nom                                                Pays                                               Population
-----  ---                                                ----                                               ----------
-   1  Shanghai                                           China                                                22315474
-   2  Buenos Aires                                       Argentina                                            13076300
-   3  Mumbai                                             India                                                12691836
-   4  Mexico City                                        Mexico                                               12294193
-   5  Beijing                                            China                                                11716620
-   6  Karachi                                            Pakistan                                             11624219
-   7  Istanbul                                           Turkey                                               11174257
-   8  Tianjin                                            China                                                11090314
-   9  Guangzhou                                          China                                                11071424
-  10  Delhi                                              India                                                10927986
+Rang    Nom                                                Pays                                               Population
+----    ---                                                ----                                               ----------
+   1    Shanghai                                           China                                                22315474
+   2    Buenos Aires                                       Argentina                                            13076300
+   3    Mumbai                                             India                                                12691836
+   4    Mexico City                                        Mexico                                               12294193
+   5    Beijing                                            China                                                11716620
+   6    Karachi                                            Pakistan                                             11624219
+   7    Istanbul                                           Turkey                                               11174257
+   8    Tianjin                                            China                                                11090314
+   9    Guangzhou                                          China                                                11071424
+  10    Delhi                                              India                                                10927986
 
 ## Contenu du projet
 
