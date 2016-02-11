@@ -16,6 +16,10 @@
 #define LONG_TABLEAU_VILLE  25000
 #define LONG_TABLEAU_PAYS   300
 #define DELIMITER "\t"
+#define RANG "Rang"
+#define NOM "Nom"
+#define PAYS "Pays"
+#define POPULATION "Population"
 
 typedef struct Pays {
     char nom[LONG_NOM_PAYS];   // Le nom ASCII
@@ -48,15 +52,11 @@ int main(int argc, const char * argv[]) {
     Ville laville;
     Ville tabVille[LONG_TABLEAU_VILLE];
     int i = 0;
+    long n;
     
     if (argc != 2 )
     {
         printf("Le nombre d'arguments entrer est inferieur ou superieur a 2\n");
-        return 1;
-    }
-    
-    if (n < 1 || n >5000) {
-        printf("Le nombre entrer n'est pas valide\n");
         return 1;
     }
     
@@ -78,6 +78,13 @@ int main(int argc, const char * argv[]) {
         laville = traiterVille(buffer, tabPays);
         tabVille[i] = laville;
         i++;
+    }
+    
+    n = strtol(argv[1], &ptr, 10);
+    
+    if (n < 1 || n >5000) {
+        printf("Le nombre entrer n'est pas valide\n");
+        return 1;
     }
     
     quickSort(tabVille, 0, LONG_TABLEAU_VILLE - 1);
