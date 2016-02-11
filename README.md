@@ -54,7 +54,7 @@ Exemple 4:
 ./tp1 10
 
 Rang    Nom                                                Pays                                               Population
-----    ---                                                ----                                               ---------- \n
+----    ---                                                ----                                               ---------- 
    1    Shanghai                                           China                                                22315474
    2    Buenos Aires                                       Argentina                                            13076300
    3    Mumbai                                             India                                                12691836
