@@ -1,6 +1,6 @@
 //
-//  main.c
-//  TP1
+//  tp1.c
+//  tp1
 //
 //  Created by Joy-Rey Babagbeto on 2016-01-22.
 //  Copyright © 2016 Joy-Rey Babagbeto. All rights reserved.
@@ -32,13 +32,79 @@ typedef struct Ville {
     struct Pays pays;         // Le pays de la ville
 } Ville;
 
+/**
+  Ouvre un fichier 
+ @param char*
+    Le nom du fichier à ouvrir
+ @return retourne le fichier ouvert ou NULL si le fichier n'existe pas
+ */
 FILE* ouvrirFichier(char*);
+
+/**
+ Ferme le fichier
+ @param FILE* 
+    Le fichier à fermer
+ @return 0 si le fichier a été fermer et 1 dans le cas contraire
+ */
 int fermerFichier(FILE*);
+
+/**
+ Construit un pays avec son nom et son code
+ @param char*
+    La ligne du fichier
+ @return le pays avec son nom et son code
+ */
 Pays traiterPays(char*);
+
+/**
+ Construit une ville avec son nom, sa population et son pays
+ @param char*
+    La ligne du fichier
+ @return une ville avec son nom, sa population et son pays
+ */
 Ville traiterVille( char*, Pays*);
+
+/**
+ Recherche le pays correspondant dans le tableau à partir de son code
+ @param char*
+    Code du pays
+ @param Pays*
+    Tableau de pays
+ @return le pays avec son code et son nom
+ */
 Pays rechercherPays(char*, Pays*);
+
+/**
+ Inspiré de la page https://openclassrooms.com/courses/le-tri-rapide-qsort
+ Echange les positions de deux villes dans le tableau
+ @param Ville*
+    Tableau de villes
+ @param int
+    Position de la première ville à échanger
+ @param int
+    Position de la deuxième ville à échanger
+ */
 void echanger(Ville*, int, int);
+
+/**
+ Inspiré de la page https://openclassrooms.com/courses/le-tri-rapide-qsort
+ Effectue le tri rapide du tableau de villes
+ @param Ville*
+    Tableau de villes
+ @param int
+    Position du début du tri
+ @param int
+    Position de la fin du tri
+ */
 void quickSort(Ville*, int, int);
+
+/**
+ Affiche la liste des villes et de leur pays
+ @param Ville*
+    Tableau de villes
+ @param int
+    Le nombre de villes à afficher
+ */
 void afficherResultats(Ville*, int);
 
 int main(int argc, const char * argv[]) {
